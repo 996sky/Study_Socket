@@ -1,20 +1,20 @@
 from socket import *
-IP = '127.0.0.1'
+IP = '0.0.0.1'
 PORT = 2333
 
 BUFLEN = 512
 
-listen = socket(AF_INET,SOCK_STREAM)
-listen.bind((IP,PORT))
-listen.listen(5)
+listenSocket = socket(AF_INET,SOCK_STREAM)
+listenSocket.bind((IP,PORT))
+listenSocket.listen(5)
 print(f'服务端启动成功，在{PORT}端口监听客户端连接')
 
-mySocket,addr = listen.accept()
+dataSocket,addr = listenSocket.accept()
 print(f'接收到客户端连接：',addr)
 
 
 while True:
-    received = mySocket.recv(BUFLEN)
+    received = dataSocket.recv(BUFLEN)
     if not received:
         break
     info = received.decode()
@@ -23,7 +23,7 @@ while True:
     aboutToSend = input('发送的消息>> ')
     if aboutToSend =='':
         break
-    mySocket.send(aboutToSend.encode())
+    dataSocket.send(aboutToSend.encode())
 
-mySocket.close()
-listen.close()
+dataSocket.close()
+listenSocket.close()
