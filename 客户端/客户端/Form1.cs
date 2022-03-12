@@ -1,4 +1,6 @@
-﻿using System;
+﻿//https://github.com/996sky
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -97,6 +99,11 @@ namespace 客户端
                     showInfo(ex.Message);
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
